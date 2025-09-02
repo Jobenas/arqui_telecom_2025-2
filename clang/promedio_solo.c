@@ -14,20 +14,15 @@ int main(int argc, char *argv[]) {
 
     for (int i=0; i<argc; i++) {
         char *endPtr;
-        long long val = strtoll(argv[i], &endPtr, 10);
-
-        if(*endPtr != '\0') {
-            printf("Caracter invalido\r\n");
-            return 2;
-        }
-
+        long long val = atoi(argv[i]);
+        
         suma += val;
         count++;
     }
 
     if (count == 0) {
         printf("No hay numeros para promediar\r\n");
-        return 3;
+        return 2;
     }
 
     double promedio = (double)suma / (double)count;
