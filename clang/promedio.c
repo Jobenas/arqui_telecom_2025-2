@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define API
 
@@ -9,11 +10,8 @@ API float promedio(int *buf, size_t n) {
 
     for (int i= 0; i < n; i++) {
         int num = *(buf + i);
-        printf("Numero a sumar: %d\r\n", num);
         suma += num;
     }
-
-    printf("resultado de la suma: %d\r\n", suma);
 
     if (n == 0) {
         printf("No se pasaron numeros a promediar");
@@ -21,8 +19,7 @@ API float promedio(int *buf, size_t n) {
     }
 
     float prom = (float)suma / (float)n;
-    
-    printf("Promedio de %d numeros: %.6f\r\n", n, prom);
+
     return prom;
 }
 
@@ -37,6 +34,7 @@ int main(int argc, char *argv[]) {
     int *arrDinamico;     // Puntero para el arreglo creado dinamicamente
 
     arrDinamico = (int *)malloc(count * sizeof(int));
+    memset(arrDinamico, '\0', count * sizeof(int));
 
     if (arrDinamico == NULL) {
         printf("Fallo en reserva de memoria");

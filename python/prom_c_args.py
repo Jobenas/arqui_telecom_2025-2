@@ -1,5 +1,6 @@
-import os
 import ctypes as C
+import os
+import sys
 
 
 # 3) Crear funcion que construcya el arreglo en C una sola vez 
@@ -12,6 +13,17 @@ def to_c_array_int(nums: list[int]):
 
 
 if __name__ == '__main__':
+    arg_num = len(sys.argv)
+
+    numeros = list()
+
+    for i in range(1, arg_num):
+        numeros.append(int(sys.argv[i]))
+
+    if arg_num < 2:
+        print("Se necesitan pasar argumentos")
+        exit(1)
+
     # 1) Cargar la libreria
     # lib = C.CDLL(os.path.abspath("../clang/libprom.so"))
     lib = C.CDLL("./libprom.so")
@@ -21,7 +33,6 @@ if __name__ == '__main__':
     lib.promedio.restype = C.c_float
 
     # 4) Llama a la funcion y a la libreria
-    numeros = [12, 13, 14, 15, 16, 17, 18]    
     arreglo, cuenta = to_c_array_int(numeros)
 
     prom = lib.promedio(arreglo, cuenta)
