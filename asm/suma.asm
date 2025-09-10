@@ -2,9 +2,9 @@ section .data
     a db 5
     b db 3
 
-    ascii_base db 48
+    newline db 10
 
-    enter db 10
+    ascii_base db 48
 
 section .bss
     res resb 2
@@ -19,13 +19,14 @@ _start:
     
     ; suma a con b
     add rax, rbx        ; rax = rax + rbx -> rax = 5 + 3
-    mov rcx, [ascii_base]
-    add rax, rcx
+    ;mov rcx, [ascii_base]
+    ;add rax, rcx
 
-    mov rcx, [res]
+    mov rcx, res
     mov [rcx], rax
     add rcx, 1
-    mov [rcx], [enter]
+    mov rdx, [newline]
+    mov [rcx], rdx
 
     ;syswrite
     mov rax, 1
@@ -36,5 +37,5 @@ _start:
 
     ;sysexit
     mov rax, 60
-    mov rax, 0
+    mov rdi, 0
     syscall    
