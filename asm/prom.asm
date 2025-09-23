@@ -45,7 +45,7 @@ conversion:
     dec rdi 
     mov [rdi], dl
     inc rcx
-    mov rax, rsi
+    mov rsi, rax
     cmp rsi, 0
     jnz conversion
 
