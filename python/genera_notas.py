@@ -1,6 +1,6 @@
 from random import randint
 
-NUM_FILAS = 5
+NUM_FILAS = 200
 
 if __name__ == '__main__':
     contenido = ""
