@@ -18,7 +18,7 @@ def calc_nota_final(labs: list[int], e1: int, e2: int) -> float:
 
 if __name__ == "__main__":
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ("192.168.35.180", 5000)
+    server_address = ("localhost", 5000)
 
     print(f"Conectando al servidor en {server_address[0]}:{server_address[1]}")
 

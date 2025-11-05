@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     sock.bind(server_address)
 
-    sock.listen(1)
+    sock.listen(10)
 
     while True:
         print("Esperando conexiones...")
