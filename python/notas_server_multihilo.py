@@ -4,6 +4,9 @@ from typing import Union
 
 SOCK_BUFFER = 1024
 
+contador_clientes = 0
+
+
 def busca_fila(codigo: str) -> str:
     """
     Busca una fila correspondiente a las notas, referidas por codigo de alumno en el archivo 'notas.csv'
@@ -27,8 +30,11 @@ def busca_fila(codigo: str) -> str:
 
 
 def handle_client(c_sock: socket.socket, c_addr: Union[str, int]):
+    global contador_clientes
     print(f"Conexión establecida desde {c_addr[0]}:{c_addr[1]}")
 
+    contador_clientes += 1
+    print(f"Numero de clientes conectados concurrentemente: {contador_clientes}")
     try:
         while True:
             data = c_sock.recv(SOCK_BUFFER)
@@ -44,6 +50,7 @@ def handle_client(c_sock: socket.socket, c_addr: Union[str, int]):
         print("El cliente cerró la conexión abruptamente.")
     finally:
         print("Cerrando la conexión.")
+        contador_clientes -= 1
         c_sock.close()
 
 

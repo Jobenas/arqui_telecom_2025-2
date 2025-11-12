@@ -5,6 +5,8 @@ SOCK_BUFFER = 1024
 notas_num = 200
 codigo_inicial = 20250001
 
+NUM_CODIGOS = 5
+
 def calc_nota_final(labs: list[int], e1: int, e2: int) -> float:
     """
     Calcula nota final a partir de las notas parciales de labs y examenes
@@ -48,7 +50,7 @@ if __name__ == '__main__':
     inicio = time.perf_counter() 
     
     codigos = list()
-    for i in range(200):
+    for i in range(NUM_CODIGOS):
         codigo = codigo_inicial + i
         codigos.append(f"{codigo}")
     
