@@ -29,8 +29,10 @@ if __name__ == '__main__':
     db = FakeDatabase()
     print(f"Valor inicial de la base de datos: {db.value}")
 
+    inicio = time.perf_counter()
     with ThreadPoolExecutor(max_workers=workers) as executor:
         for idx in range(tasks):
             executor.submit(db.update, idx)
-        
+    fin = time.perf_counter()
     print(f"El valor final de la base de datos es: {db.value}")
+    print(f"Tiempo total de ejecucion para hilos con lock: {(fin - inicio):.6f} segundos")
