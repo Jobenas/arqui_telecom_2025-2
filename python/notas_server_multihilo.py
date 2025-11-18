@@ -34,7 +34,7 @@ def handle_client(c_sock: socket.socket, c_addr: Union[str, int]):
     print(f"Conexión establecida desde {c_addr[0]}:{c_addr[1]}")
 
     contador_clientes += 1
-    print(f"Numero de clientes conectados concurrentemente: {contador_clientes}")
+    print(f"Numero de clientes con|ectados concurrentemente: {contador_clientes}")
     try:
         while True:
             data = c_sock.recv(SOCK_BUFFER)
