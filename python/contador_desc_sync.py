@@ -1,6 +1,6 @@
 import time
 
-N = 1_000_000
+N = 100_000_000
 
 
 def countdown(n: int):

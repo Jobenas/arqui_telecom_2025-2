@@ -1,7 +1,7 @@
 import time
 from threading import Thread
 
-N = 1_000_000
+N = 100_000_000
 
 
 def countdown(n: int):
